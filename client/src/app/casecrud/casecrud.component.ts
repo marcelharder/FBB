@@ -8,6 +8,7 @@ import { dropItem } from '../_models/dropItem';
 import { CasereportServiceService } from '../_services/casereport-service.service';
 import { Router } from '@angular/router';
 import { AccountService } from '../_services/account.service';
+import { GeneralService } from '../_services/general.service';
 
 
 @Component({
@@ -22,26 +23,32 @@ export class CasecrudComponent implements OnInit {
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private caseReportService = inject(CasereportServiceService);
+  private general = inject(GeneralService);
   private accountService = inject(AccountService);
-  countries: dropItem[] = [
+  countries:dropItem[] = [];
+ /*  countries: dropItem[] = [
     {value: 31, description: "Nederland"},
     {value: 33, description: "France"},
     {value: 32, description: "Belgium"},
     {value: 49, description: "Deutschland"},
     {value: 966, description: "Kingdom of Saudi Arabia"},
     {value: 1, description: "United States"}
-  ];
+  ]; */
   Outcomes_array: dropItem[] = [
-    {value: 0, description: "Outcomes"},
-    {value: 1, description: "No adverse outcome, with conservative therapy"},
-    {value: 2, description: "Minor oesophageal injuries"},
-    {value: 3, description: "Major injuries in mediastinum requiring surgical intervention"},
-    {value: 4, description: "Major injuries in mediastinum requiring surgical intervention, permanent damage"},
-    {value: 5, description: "Major injuries in mediastinum requiring surgical intervention, resulting in death"}
+    {Value: 0, Description: "Outcomes"},
+    {Value: 1, Description: "No adverse outcome, with conservative therapy"},
+    {Value: 2, Description: "Minor oesophageal injuries"},
+    {Value: 3, Description: "Major injuries in mediastinum requiring surgical intervention"},
+    {Value: 4, Description: "Major injuries in mediastinum requiring surgical intervention, permanent damage"},
+    {Value: 5, Description: "Major injuries in mediastinum requiring surgical intervention, resulting in death"}
   ];
 
   ngOnInit(): void {
     this.initializeForm();
+    this.general.getCountries().subscribe({
+      next: (data)=>{this.countries = data}
+    });
+
   }
 
   initializeForm() {

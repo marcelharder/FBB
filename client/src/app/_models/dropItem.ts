@@ -1,4 +1,4 @@
 export interface dropItem {
-    value: number;
-    description: string;
+    Value: number;
+    Description: string;
 }

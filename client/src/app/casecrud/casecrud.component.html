@@ -28,8 +28,8 @@
       <style>select:invalid {color:gray}</style>
       <select name="dis01" class="form-control" formControlName="Country" class="form-control" placeholder="hallo" required>
         <option value = "" disabled selected hidden>Select country</option>
-        <option *ngFor="let an of countries" [value]="an.value">
-          {{ an.description }}
+        <option *ngFor="let an of countries" [value]="an.Value">
+          {{ an.Description }}
         </option>
       </select>
     </div>
@@ -73,8 +73,8 @@
     
   <div class="mb-3 form-floating">
     <select name="dis01" class="form-control" formControlName="Outcomes" class="form-control"  required>
-      <option *ngFor="let an of Outcomes_array" [value]="an.value">
-        {{ an.description }}
+      <option *ngFor="let an of Outcomes_array" [value]="an.Value">
+        {{ an.Description }}
       </option>
     </select>
   </div>

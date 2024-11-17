@@ -45,7 +45,8 @@ public class Seed
             UserName = "admin@gfancy.nl",
             Email = "admin@gfancy.nl",
             Gender = "male",
-            PaidTill = new DateTime().AddYears(2250)
+            PaidTill = new DateTime().AddYears(2250),
+            Country = "31"
         };
         await manager.CreateAsync(admin, "Pa$$w0rd");
         await manager.AddToRoleAsync(admin, "Admin");

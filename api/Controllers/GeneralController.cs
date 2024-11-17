@@ -17,4 +17,12 @@ public class GeneralController : BaseApiController
     return Ok(result);        
     }
 
+    [HttpGet("getCountries")]
+    public async Task<ActionResult> GetCountryNameFromIsoCode(){
+        var result = await _gen.GetListOfCountries();
+    return Ok(result);        
+    }
+
+    
+
 }
