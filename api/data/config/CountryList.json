@@ -1,0 +1,31 @@
+[
+    {
+        "CountryName":"NL",
+        "CountryCode":"31"
+    },
+    {
+        "CountryName":"FR",
+        "CountryCode":"33"
+    },
+    {
+        "CountryName":"SA",
+        "CountryCode":"966"
+    },
+    {
+        "CountryName":"UK",
+        "CountryCode":"44"
+    },
+    {
+        "CountryName":"US",
+        "CountryCode":"1"
+    },
+    {
+        "CountryName":"BE",
+        "CountryCode":"32"
+    },
+    {
+        "CountryName":"DE",
+        "CountryCode":"49"
+    }
+    
+]

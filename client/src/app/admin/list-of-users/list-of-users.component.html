@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <table class="table table-striped">
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Mobile</th>
+                  <th></th>
+                </tr>
+                @for(case of listOfUsers; track case.Id){
+                <tr>
+                  <td>{{case.Id}}</td>
+                  <td>{{case.UserName}}</td>
+                  <td>{{case.Email}}</td>
+                  <td>{{case.Mobile}}</td>
+                  <td><button type="button" class="badge badge-info btn-xxs"
+                      (click)="getThisOne(case.Id)">select</button></td>
+                </tr>
+            }
+              </table>
+        </div>
+        <div class="col-sm-6"><app-userdetail [cr]="getSelectedUser()"></app-userdetail></div>
+    </div>
+</div>
+

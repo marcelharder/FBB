@@ -1,0 +1,31 @@
+<div class="topnav">
+
+  <a routerLink="/" class="active">Fused Button Battery</a>
+  <a routerLink="/knowledge"  routerLinkActive="active">Knowledge base</a>
+  @if (accountService.currentUser()){<a routerLink="/casecrud"  routerLinkActive="active">Report a case</a>}
+  <a routerLink="/about">About</a>
+  <a *ngIf="adminLoggedIn()" routerLink="/dashboard">Admin</a> 
+  
+  
+
+  
+  @if (accountService.currentUser()){
+    <div class="topnav-right me-4">
+      <div class="row mt-2">
+        <div class="col-sm-8 mt-1" style="color:white">Welcome {{currentUserName}}</div>
+        <div class="col-sm-4"><button class="btn btn-outline-warning" (click)="logout()">Logout</button></div>
+      </div> 
+    </div>
+    }
+
+
+  
+  @if (!accountService.currentUser()){
+  <div class="topnav-right mt-1 me-4">
+    <form #loginForm="ngForm" (submit)="login()"  class="d-flex" autocomplete="off">
+      <input name="username" [(ngModel)]="model.username" placeholder="Username" class="form-control me-2">
+      <input name="password" [(ngModel)]="model.password" placeholder="Password" type="password" class="form-control me-2">
+      <button class="btn btn-outline-success" type="submit">Login</button>
+    </form>
+  </div>
+  }

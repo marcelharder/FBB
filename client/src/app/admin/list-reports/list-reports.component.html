@@ -1,0 +1,32 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <table class="table table-striped">
+                <tr>
+                  <th>#</th>
+                  <th>Country</th>
+                  <th>Gender</th>
+                  <th>Age</th>
+                  <th></th>
+                </tr>
+                @for(case of listOfCases; track case.CaseReportNo){
+                <tr>
+                  <td>{{case.CaseReportNo}}</td>
+                  <td>{{case.Country}}</td>
+                  <td>{{case.Gender}}</td>
+                  <td>{{case.DateOfBirth | date : 'shortDate'}}</td>
+                  <td><button type="button" class="badge badge-info btn-xxs"
+                      (click)="getThisOne(case.CaseReportNo)">select</button></td>
+                </tr>
+            }
+              </table>
+        </div>
+        <div class="col-sm-4"><app-report-detail [cr]="getSelectedReport()"></app-report-detail></div>
+    </div>
+</div>
+
+
+
+
+    

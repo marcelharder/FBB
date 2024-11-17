@@ -1,0 +1,9 @@
+api/appsettings.json
+api/appsettings.Development.json
+api/**/tar
+api/**/bin
+api/**/obj
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+=======
+client/node_modules

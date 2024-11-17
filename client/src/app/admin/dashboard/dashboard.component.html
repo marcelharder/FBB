@@ -1,0 +1,16 @@
+<div class="container mt-5">
+  <div>
+    <tabset>
+      <tab heading="List of Reports" id="tab1">
+           <app-list-reports [listOfCases]="listOfCases"></app-list-reports></tab>
+      <tab heading="List of Referrers">
+        <div class="row">
+          <div class="col-sm-12">
+            <button class="btn btn-warning mt-2 mb-2 ml-auto" (click)="addRef()">Register Referrer</button>
+          </div>
+        </div>
+        <app-list-of-users [listOfUsers]="listOfUsers"></app-list-of-users></tab>
+      <tab heading="Spare">Basic content 2</tab>
+    </tabset>
+  </div>
+</div>

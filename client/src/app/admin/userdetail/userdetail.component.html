@@ -1,0 +1,51 @@
+<div class="row">
+  
+    <div class="card">
+      <div class="card-header"></div>
+      <div class="card-body">
+       <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-sm-4"><h6><span>Name:</span></h6></div>
+                <div class="col-sm-8">{{ cr?.KnownAs }}</div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4"><h6><span>Country:</span></h6></div>
+                <div class="col-sm-8">{{ cr?.Country}}</div>
+              </div>
+              <div class="row">
+                  <div class="col-sm-4"><h6><span>Email:</span></h6></div>
+                  <div class="col-sm-8">{{ cr?.Email }}</div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-4"><h6><span>Mobile:</span></h6></div>
+                  <div class="col-sm-8">{{ cr?.Mobile }}</div>
+                </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row">
+                <div class="col-sm-12">
+                  <img src="{{ cr?.PhotoUrl }}" width="175px" height="200px" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <button class="btn btn-secondary">Change image</button>
+                </div>
+              </div>
+        </div>
+    </div>
+
+
+
+
+
+
+       
+      </div>
+      <div class="card-footer">
+
+      </div>
+    </div>
+  
+</div>
