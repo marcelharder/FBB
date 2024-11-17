@@ -1,0 +1,9 @@
+#sect1 {
+    height: 650px;
+    color: #fff;
+    background-image: url("../../assets/nogeen.jpg");
+    background-size: 100%;
+    background-size: cover;
+    opacity:0.5;
+
+  }
