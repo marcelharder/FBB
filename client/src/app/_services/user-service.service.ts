@@ -15,7 +15,7 @@ export class UserServiceService {
 
   updateUser(user: User, id: number){return this.http.put<any>(this.baseUrl + 'User/' + id, user)  }
 
-
+  deleteUser(id: number){return this.http.delete<string>(this.baseUrl + 'User/' + id, { responseType: 'text' as 'json' })}
 
 
 

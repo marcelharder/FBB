@@ -1,1 +1,103 @@
+<div class="container mt-5">
+    <form [formGroup]="registerUserForm" (ngSubmit)="sendUp()" autocomplete="off">
+      <h2 class="text-center text-secondary">Register new user</h2>
+      <hr />
 
+      <app-text-input
+      [formControl]="$any(registerUserForm.controls['UserName'])"
+      [label]="'User name'"
+    ></app-text-input>
+
+       <app-text-input
+        [formControl]="$any(registerUserForm.controls['Password'])"
+        [label]="'Password'"
+      ></app-text-input> 
+      
+      <app-text-input
+        [formControl]="$any(registerUserForm.controls['ConfirmPassword'])"
+        [label]="'ConfirmPassword'"
+      ></app-text-input> 
+     
+  
+      <div class="mb-3">
+        <label style="margin-right: 20px">Gender</label>
+        <label class="form-check-label" style="margin-right: 10px">
+          <input
+            type="radio"
+            class="form-check-input"
+            value="male"
+            formControlName="Gender"
+          />male</label
+        >
+        <label class="form-check-label">
+          <input
+            type="radio"
+            class="form-check-input"
+            value="female"
+            formControlName="Gender"
+          />female</label
+        >
+      </div>
+      <div class="mb-3 form-floating">
+        <style>select:invalid {color:gray}</style>
+        <select name="dis01" class="form-control" formControlName="Country" class="form-control" placeholder="hallo" required>
+          <option value = "" disabled selected hidden>Select country</option>
+          <option *ngFor="let an of countries" [value]="an.Value">
+            {{ an.Description }}
+          </option>
+        </select>
+      </div>
+  
+     
+      
+   <!--     <app-text-input
+        [formControl]="$any(registerUserForm.controls['Country'])"
+        [label]="'Country'"
+      ></app-text-input> 
+   -->
+        
+      <!-- <div class="mb-3">
+        <label style="margin-right: 20px">Battery Type</label>
+        <label class="form-check-label" style="margin-right: 10px">
+          <input
+            type="radio"
+            class="form-check-input"
+            value="regular"
+            formControlName="BatteryType"
+          />regular</label
+        >
+        <label class="form-check-label">
+          <input
+            type="radio"
+            class="form-check-input"
+            value="fused button battery"
+            formControlName="BatteryType"
+          />fused button</label
+        >
+      </div> -->
+      
+      <app-text-input
+      [formControl]="$any(registerUserForm.controls['Email'])"
+      [label]="'Email'"
+    ></app-text-input>
+
+    <app-text-input
+    [formControl]="$any(registerUserForm.controls['Mobile'])"
+    [label]="'Mobile'"
+  ></app-text-input>
+      
+    <!-- <div class="mb-3 form-floating">
+      <select name="dis01" class="form-control" formControlName="Outcomes" class="form-control"  required>
+        <option *ngFor="let an of Outcomes_array" [value]="an.Value">
+          {{ an.Description }}
+        </option>
+      </select>
+    </div> -->
+  
+      <div>
+        <button class="btn btn-secondary me-2" type="submit" [disabled]="!registerUserForm.valid">Save</button>
+      </div>
+  
+    </form>
+    
+  </div>

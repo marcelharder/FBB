@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CaseReportModel } from '../../_models/CaseReportModel';
 
 @Component({
@@ -10,6 +10,7 @@ import { CaseReportModel } from '../../_models/CaseReportModel';
 })
 export class ReportDetailComponent {
 @Input() cr?: CaseReportModel = {} as CaseReportModel;
+
 
 
 
