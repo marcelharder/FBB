@@ -26,14 +26,6 @@ export class CasecrudComponent implements OnInit {
   private general = inject(GeneralService);
   private accountService = inject(AccountService);
   countries:dropItem[] = [];
- /*  countries: dropItem[] = [
-    {value: 31, description: "Nederland"},
-    {value: 33, description: "France"},
-    {value: 32, description: "Belgium"},
-    {value: 49, description: "Deutschland"},
-    {value: 966, description: "Kingdom of Saudi Arabia"},
-    {value: 1, description: "United States"}
-  ]; */
   Outcomes_array: dropItem[] = [
     {Value: 0, Description: "Outcomes"},
     {Value: 1, Description: "No adverse outcome, with conservative therapy"},
@@ -89,7 +81,7 @@ export class CasecrudComponent implements OnInit {
   }
 
   private getDateOnly(dob: string | undefined){
-    if (!dob) return 
+    if (!dob) return null
     return new Date(dob).toISOString().slice(0,10);
   }
 }

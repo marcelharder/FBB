@@ -21,12 +21,13 @@ export class NavComponent implements OnInit{
   ngOnInit(): void {
     // this.currentUserName = "Marcel Harder";
     this.currentUserName = null;
+   
     
   }
-  adminLoggedIn(){if(this.accountService.rollen().some(r => this.selector.includes(r))){return true;} else {return false;}}
+  adminLoggedIn(){
+    if(this.accountService.rollen().some(r => this.selector.includes(r))){return true;} else {return false;}}
   
   login(){
-  
     this.accountService.login(this.model).subscribe({
       next: response => {
         this.currentUserName = this.accountService.currentUser()?.UserName;
@@ -34,18 +35,11 @@ export class NavComponent implements OnInit{
       error: error => { console.log(error); },
       complete: () => { }
     })  
-
-
-
-
-    
   }
+
   logout(){
     this.route.navigateByUrl('/');
-    this.accountService.logout()}
+    this.accountService.logout()};
 
-}
-function rollen() {
-  throw new Error('Function not implemented.');
 }
 

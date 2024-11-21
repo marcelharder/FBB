@@ -13,6 +13,8 @@ export class UserServiceService {
 
   getAllUsers(){  return this.http.get<User[]>(this.baseUrl + 'User/getAllUsers')  }
 
+  updateUser(user: User, id: number){return this.http.put<any>(this.baseUrl + 'User/' + id, user)  }
+
 
 
 

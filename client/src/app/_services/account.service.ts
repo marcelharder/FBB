@@ -39,6 +39,7 @@ export class AccountService {
   logout(){
     localStorage.removeItem('user');
     this.currentUser.set(null);
+    this.rollen.set([]);
   }
   getDecodedToken(token: string) { return JSON.parse(atob(token.split('.')[1])); }
 

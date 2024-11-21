@@ -1,51 +1,91 @@
 <div class="row">
-  
-    <div class="card">
-      <div class="card-header"></div>
-      <div class="card-body">
-       <div class="row">
+  <div class="card">
+    <div class="card-header">
+      @if(!showEditBlok()){
+      <div>
+        <button class="btn btn-secondary" (click)="EditUser()">Edit</button>
+        <button
+          class="btn btn-warning"
+          style="float: right"
+          (click)="DeleteUser()"
+        >
+          Delete
+        </button>
+      </div>
+    }
+    </div>
+    <div class="card-body">
+      @if(showEditBlok())
+      {
+<form #userUpdateForm="ngForm" id="updateForm">
+        <div class="row">
+          <div class="col-sm-4">
+            <h6><span>Name:</span></h6>
+          </div>
+          <div class="col-sm-8"><input name="know" class="form-control" type="text" [(ngModel)]="cr.KnownAs" ></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <h6><span>Email:</span></h6>
+          </div>
+          <div class="col-sm-8"><input name="email" class="form-control" type="text" [(ngModel)]="cr.Email"  ></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <h6><span>Mobile:</span></h6>
+          </div>
+          <div class="col-sm-8"><input name="mobile" class="form-control" type="text" [(ngModel)]="cr.Mobile"  ></div>
+        </div>
+      </form>
+        <div class="row">
+          <div class="col-sm-6"><button class="btn btn-danger" (click)="CancelUpdate()">Cancel</button></div>
+          <div class="col-sm-6"><button class="btn btn-secondary" (click)="Update()">Update</button></div>
+        </div>
+      } 
+      @if(!showEditBlok())
+      {
+      <div class="row">
         <div class="col-sm-6">
-            <div class="row">
-                <div class="col-sm-4"><h6><span>Name:</span></h6></div>
-                <div class="col-sm-8">{{ cr?.KnownAs }}</div>
-              </div>
-              <div class="row">
-                <div class="col-sm-4"><h6><span>Country:</span></h6></div>
-                <div class="col-sm-8">{{ cr?.Country}}</div>
-              </div>
-              <div class="row">
-                  <div class="col-sm-4"><h6><span>Email:</span></h6></div>
-                  <div class="col-sm-8">{{ cr?.Email }}</div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-4"><h6><span>Mobile:</span></h6></div>
-                  <div class="col-sm-8">{{ cr?.Mobile }}</div>
-                </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <h6><span>Name:</span></h6>
+            </div>
+            <div class="col-sm-8">{{ cr?.KnownAs }}</div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <h6><span>Country:</span></h6>
+            </div>
+            <div class="col-sm-8">{{ cr?.Country }}</div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <h6><span>Email:</span></h6>
+            </div>
+            <div class="col-sm-8">{{ cr?.Email }}</div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <h6><span>Mobile:</span></h6>
+            </div>
+            <div class="col-sm-8">{{ cr?.Mobile }}</div>
+          </div>
         </div>
         <div class="col-sm-6">
-            <div class="row">
-                <div class="col-sm-12">
-                  <img src="{{ cr?.PhotoUrl }}" width="175px" height="200px" />
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-12">
-                  <button class="btn btn-secondary">Change image</button>
-                </div>
-              </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <img src="{{ cr?.PhotoUrl }}" width="175px" height="200px" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <button class="btn btn-secondary">Change image</button>
+            </div>
+          </div>
         </div>
-    </div>
-
-
-
-
-
-
-       
       </div>
-      <div class="card-footer">
-
-      </div>
+    }
     </div>
-  
+    <div class="card-footer"></div>
+  </div>
 </div>

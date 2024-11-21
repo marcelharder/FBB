@@ -97,9 +97,40 @@ public class UserController : BaseApiController
         return BadRequest("Could not find photo to upload...");
     }
 
-    /*   [HttpPut]
+      [HttpPost("addUser")]
+       public async Task<IActionResult> addUser(UserForRegisterDto ufr)
+        {
+            var user = await _manager.Users.SingleOrDefaultAsync(x => x.UserName == ufr.UserName.ToLower());
+            if (user != null) { return BadRequest("User already exists ..."); }
+
+            user = new AppUser
+            {
+
+                UserName = ufr.UserName.ToLower(),
+                Country = ufr.Country,
+                KnownAs = ufr.KnownAs,
+                Created = DateTime.Now,
+                LastActive = DateTime.Now,
+                PaidTill = DateTime.Now.AddDays(30),
+                Email = ufr.UserName.ToLower(),
+                Gender = "Male",
+                Mobile = ufr.Mobile,
+                Active = ufr.Active,
+                PhotoUrl = ""
+            };
+
+            var result = await _manager.CreateAsync(user, ufr.Password);
+            if (!result.Succeeded) { return BadRequest(result.Errors); }
+
+            var roleResult = await _manager.AddToRoleAsync(user, "Surgery");
+            if (!roleResult.Succeeded) { return BadRequest(roleResult.Errors); }
+
+            UserDto ufre = _mapper.Map<UserDto>(user);
+            return CreatedAtRoute("GetUser", new { id = user.Id }, ufre);
+        }
+
   
-      [HttpPost]
+     /*  [HttpPost]
   
       [HttpDelete] */
 }

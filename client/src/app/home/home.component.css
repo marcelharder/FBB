@@ -22,3 +22,9 @@
     font-style: normal;
     font-size: large; */
   }
+.bkground{
+  background-image: url(../../assets/IMG_3027.JPG);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+  

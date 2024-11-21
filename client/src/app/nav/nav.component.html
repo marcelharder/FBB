@@ -1,11 +1,11 @@
 <div class="topnav">
 
   <a routerLink="/" class="active">Fused Button Battery</a>
-  <a routerLink="/knowledge"  routerLinkActive="active">Knowledge base</a>
+
+  @if (accountService.currentUser()){<a routerLink="/knowledge" routerLinkActive="active">Knowledge base</a>}
   @if (accountService.currentUser()){<a routerLink="/casecrud"  routerLinkActive="active">Report a case</a>}
   <a routerLink="/about">About</a>
-  <a *ngIf="adminLoggedIn()" routerLink="/dashboard">Admin</a> 
-  
+  <a *ngIf="adminLoggedIn()" routerLink="/dashboard">Reports/Referrers</a> 
   
 
   

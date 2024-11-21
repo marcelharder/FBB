@@ -5,7 +5,6 @@ export interface User {
   roles: string[];
   KnownAs: string;
   PhotoUrl: string;
-  DateOfBirth: Date;
   Email: string;
   Mobile: string;
   PaidTill: Date;
