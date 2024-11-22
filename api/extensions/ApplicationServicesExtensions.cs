@@ -38,6 +38,7 @@ namespace FBB.extensions;
           
             services.AddSingleton<DapperContext>();
             //services.AddScoped<reportMapper>();
+            services.AddScoped<IPhotoService, PhotoService>();
             services.AddScoped<IGeneral, General>();
             services.AddScoped<IUsers,UserRepo>();
             services.AddScoped<ITokenService,TokenService>();

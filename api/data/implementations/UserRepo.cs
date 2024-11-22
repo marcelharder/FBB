@@ -62,7 +62,27 @@ public class UserRepo : IUsers
 
         return null;
     }
+    public async Task<AppUser?> GetUserByName(string name)
+    {
+        if (name != null)
+        {
+            var user = await _userManager.FindByNameAsync(name);
+            if (user != null) { return user; }
+        }
 
+        return null;
+    }
+
+public async Task<AppUser?> GetUserById(string id)
+    {
+        if (id != null)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user != null) { return user; }
+        }
+
+        return null;
+    }
     
 
      public async Task<bool> SaveAll()

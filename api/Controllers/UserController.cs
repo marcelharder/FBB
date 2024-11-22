@@ -1,3 +1,5 @@
+using System.Security.Claims;
+
 namespace api.Controllers;
 
 [Authorize]
@@ -7,26 +9,19 @@ public class UserController : BaseApiController
 
     private readonly IMapper _mapper;
     private readonly UserManager<AppUser> _manager;
-    private readonly IOptions<CloudinarySettings> _cloudinaryConfig;
-    private readonly Cloudinary _cloudinary;
+    private readonly IPhotoService _photo;
 
     public UserController(
         UserManager<AppUser> manager,
         IUsers user,
-        IMapper mapper,
-        IOptions<CloudinarySettings> cloudinaryConfig
+        IPhotoService photo,
+        IMapper mapper
     )
     {
         _user = user;
+        _photo = photo;
         _mapper = mapper;
         _manager = manager;
-        _cloudinaryConfig = cloudinaryConfig;
-        Account acc = new Account(
-            _cloudinaryConfig.Value.CloudName,
-            _cloudinaryConfig.Value.ApiKey,
-            _cloudinaryConfig.Value.ApiSecret
-        );
-        _cloudinary = new Cloudinary(acc);
     }
 
     [HttpGet]
@@ -59,41 +54,35 @@ public class UserController : BaseApiController
         throw new Exception($"Updating user {up.Id} failed on save");
     }
 
-    [HttpPost("addUserPhoto/{id}")]
-    public async Task<IActionResult> AddPhotoForUser( int id, [FromForm] PhotoForCreationDto photoDto )
+    [HttpPost("addUserPhoto")]
+    public async Task<IActionResult> AddPhotoForUser(IFormFile file)
     {
-        var user = await _manager.Users.SingleOrDefaultAsync(x => x.Id == id);
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (userId == null)
+        {
+            return BadRequest("");
+        }
+        var user = await _user.GetUserById(userId);
         if (user == null)
         {
-            return BadRequest("Referrer not available now");
+            return BadRequest("");
         }
 
-        var file = photoDto.File;
-        var uploadResult = new ImageUploadResult();
-        if (file.Length > 0)
+        var result = await _photo.AddPhotoAsync(file);
+        if (result.Error != null)
         {
-            using (var stream = file.OpenReadStream())
-            {
-                var uploadParams = new ImageUploadParams()
-                {
-                    File = new FileDescription(file.Name, stream),
-                    Transformation = new Transformation()
-                        .Width(500)
-                        .Height(500)
-                        .Crop("fill")
-                        .Gravity("face")
-                };
-                uploadResult = _cloudinary.Upload(uploadParams);
-            }
-            user.PhotoUrl = uploadResult?.SecureUrl?.AbsoluteUri;
-
-            if (await _user.SaveAll())
-            {
-                UserDto ufr = _mapper.Map<AppUser, UserDto>(user);
-                return CreatedAtRoute("GetUser", new { id = user.Id }, ufr);
-            }
+            return BadRequest(result.Error.Message);
         }
-        return BadRequest("Could not find photo to upload...");
+        user.PhotoUrl = result.SecureUrl?.AbsoluteUri;
+        if (await _user.SaveAll())
+        {
+            UserDto ufr = _mapper.Map<AppUser, UserDto>(user);
+            return CreatedAtRoute("GetUser", new { id = user.Id }, ufr);
+        }
+
+        return BadRequest();
+
+        
     }
 
     [HttpPost("addUser")]

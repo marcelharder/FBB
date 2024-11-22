@@ -7,6 +7,10 @@ public interface IUsers
     Task<List<UserDto>> GetAllUsers();
     
     Task<AppUser?> GetUserByMail(string email);
+
+    Task<AppUser?> GetUserByName(string name);
+
+    Task<AppUser?> GetUserById(string name);
     Task<bool> UpdatePayment(DateTime d, int id);
     Task<bool> SaveAll();
     void Update(AppUser p);
