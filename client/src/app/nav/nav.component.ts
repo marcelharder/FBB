@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AccountService } from '../_services/account.service';
 import { NgIf } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-nav',
@@ -13,6 +14,7 @@ import { NgIf } from '@angular/common';
 })
 export class NavComponent implements OnInit{
   accountService = inject(AccountService);
+  private toastr = inject(ToastrService);
   route = inject(Router);
    model:any = {};
   currentUserName?: any;
@@ -30,14 +32,15 @@ export class NavComponent implements OnInit{
   login(){
     this.accountService.login(this.model).subscribe({
       next: response => {
-        this.currentUserName = this.accountService.currentUser()?.UserName;
+        this.currentUserName = this.accountService.currentUser()?.KnownAs;
       },
-      error: error => { console.log(error); },
-      complete: () => { }
+      error: error => { this.toastr.error("Unauthorized, pls check your UN and PWD") },
+      complete: () => { this.toastr.success("Logged in")}
     })  
   }
 
   logout(){
+    this.toastr.success("Logged out")
     this.route.navigateByUrl('/');
     this.accountService.logout()};
 

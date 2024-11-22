@@ -29,7 +29,11 @@ backFromUserDetails(evt: any){
   // renew the userlist
   this.listOfUsers = [];
   this.userService.getAllUsers().subscribe({
-    next: (data)=>{this.listOfUsers = data}
+    next: (data)=>{
+      this.listOfUsers = data;
+      this.selectedUser = data[0];
+      this.userDetails = 1;
+    }
   })
 
 }

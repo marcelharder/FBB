@@ -11,6 +11,7 @@ import { User } from '../../_models/User';
 import { UserServiceService } from '../../_services/user-service.service';
 import { GeneralService } from '../../_services/general.service';
 import { FormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-userdetail',
@@ -25,6 +26,7 @@ export class UserdetailComponent implements OnInit {
 
   listOfUsers: User[] = [];
   private userService = inject(UserServiceService);
+  private toast = inject(ToastrService);
   EditBlok = 0;
 
   ngOnInit(): void {
@@ -49,14 +51,20 @@ export class UserdetailComponent implements OnInit {
   }
 
   DeleteUser() {
-    // remove the current user
+    // remove the current user, if user is not demo of admin
+    
     var help = this.cr?.Id;
     if (help != undefined) {
+      if(help == 7){this.toast.error("Can't delete the demo user")}
+      else{
+      if(help == 8){this.toast.error("Can't delete the admin user")} else {
       this.userService.deleteUser(help).subscribe({
         next: (data) => {
           this.up.emit("close");
         },
       });
+    }
+  }
     }
   }
 

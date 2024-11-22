@@ -48,6 +48,7 @@ public class AccountController : BaseApiController
         user.PaidTill = DateTime.Now.AddDays(90);
         user.Mobile = registerDto.Mobile;
         user.Email = registerDto.Email;
+        user.PhotoUrl = "../../assets/user.jpg";
 
         var result = await _manager.CreateAsync(user, registerDto.Password);
         if (!result.Succeeded) { return BadRequest(result.Errors); }
@@ -58,7 +59,7 @@ public class AccountController : BaseApiController
         return new UserDto
         {
             UserName = user.UserName,
-            PhotoUrl = "../../assets/user.jpg",
+            PhotoUrl = user.PhotoUrl,
             Email = user.Email,
             Mobile = user.Mobile,
             Token = await _ts.CreateToken(user),
@@ -85,6 +86,7 @@ public class AccountController : BaseApiController
         {
             UserName = user.UserName!,
             PhotoUrl="",
+            KnownAs = user.KnownAs,
             Email = "",
             Token = await _ts.CreateToken(user),
             Id = user.Id,

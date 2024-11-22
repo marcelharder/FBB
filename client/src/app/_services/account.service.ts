@@ -41,6 +41,19 @@ export class AccountService {
     this.currentUser.set(null);
     this.rollen.set([]);
   }
+
+  register(model: any) {
+    return this.http.post<User>(this.baseUrl + 'Account/register', model).pipe(
+      map((response: User) => {
+        const user = response;
+        
+      })
+    )
+  }
+
+
+
+
   getDecodedToken(token: string) { return JSON.parse(atob(token.split('.')[1])); }
 
   

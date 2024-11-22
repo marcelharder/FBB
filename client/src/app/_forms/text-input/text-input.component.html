@@ -13,6 +13,14 @@
     <div *ngIf="control.hasError('minlength')" class="invalid-feedback text-start">
         {{label()}} must be at least {{control.errors?.['minlength'].requiredLength}} characters
     </div>
+
+    <div *ngIf="control.hasError('pattern')" class="invalid-feedback text-start">
+        {{label()}} is not complex enough, min 1 lowercase, min 1 uppercase, min 1 symbol, min 1 number
+    </div>
+ 
+    <div *ngIf="control.hasError('email')" class="invalid-feedback text-start">
+        Please enter a valid email.
+    </div>
     
     <div *ngIf="control.hasError('maxlength')" class="invalid-feedback text-start">
         {{label()}} must be at the most {{control.errors?.['maxlength'].requiredLength}} characters

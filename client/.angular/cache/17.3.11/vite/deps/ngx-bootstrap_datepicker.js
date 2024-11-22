@@ -1,8 +1,4 @@
 import {
-  NG_VALIDATORS,
-  NG_VALUE_ACCESSOR
-} from "./chunk-SLALFBZO.js";
-import {
   ComponentLoaderFactory,
   OnChange,
   PlacementForBs5,
@@ -18,6 +14,10 @@ import {
   transition,
   trigger
 } from "./chunk-7KSYVAFD.js";
+import {
+  NG_VALIDATORS,
+  NG_VALUE_ACCESSOR
+} from "./chunk-SLALFBZO.js";
 import {
   AsyncPipe,
   CommonModule,

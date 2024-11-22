@@ -60,10 +60,7 @@ public class UserController : BaseApiController
     }
 
     [HttpPost("addUserPhoto/{id}")]
-    public async Task<IActionResult> AddPhotoForUser(
-        int id,
-        [FromForm] PhotoForCreationDto photoDto
-    )
+    public async Task<IActionResult> AddPhotoForUser( int id, [FromForm] PhotoForCreationDto photoDto )
     {
         var user = await _manager.Users.SingleOrDefaultAsync(x => x.Id == id);
         if (user == null)
