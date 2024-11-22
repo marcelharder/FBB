@@ -9,6 +9,7 @@ import { CasereportServiceService } from '../_services/casereport-service.servic
 import { Router } from '@angular/router';
 import { AccountService } from '../_services/account.service';
 import { GeneralService } from '../_services/general.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -25,6 +26,7 @@ export class CasecrudComponent implements OnInit {
   private caseReportService = inject(CasereportServiceService);
   private general = inject(GeneralService);
   private accountService = inject(AccountService);
+  private toastr = inject(ToastrService);
   countries:dropItem[] = [];
   Outcomes_array: dropItem[] = [
     {Value: 0, Description: "Outcomes"},
@@ -67,6 +69,7 @@ export class CasecrudComponent implements OnInit {
   }
 
   sendUp() {
+    
     const dob = this.getDateOnly(this.registerCaseForm.get('DateOfBirth')?.value);
     this.registerCaseForm.patchValue({DateOfBirth: dob});
 
@@ -75,7 +78,10 @@ export class CasecrudComponent implements OnInit {
     this.registerCaseForm.patchValue({ReferrerId: ref});
 
     this.caseReportService.createCaseReport(this.registerCaseForm.value).subscribe({
-      next: _=> this.router.navigateByUrl('/'),
+      next: _=> {
+        this.router.navigateByUrl('/');
+        this.toastr.success("Thank you, your contribution is much appreciated");
+      },
       error: error => {}
     })  
   }

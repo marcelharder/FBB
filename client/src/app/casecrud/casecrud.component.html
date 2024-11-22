@@ -1,10 +1,10 @@
 <div class="container mt-5">
-  <form [formGroup]="registerCaseForm" (ngSubmit)="sendUp()" autocomplete="off">
-    <h2 class="text-center text-secondary">Upload a swallowed battery case</h2>
-    <hr />
-  
-   
+<div class="card">
+  <div class="card-header"> <h2 class="text-center text-secondary">Upload a swallowed battery case</h2></div>
+  <div class="card-body bkground">
 
+
+  <form [formGroup]="registerCaseForm" (ngSubmit)="sendUp()" autocomplete="off">
     <div class="mb-3">
       <label style="margin-right: 20px">Gender</label>
       <label class="form-check-label" style="margin-right: 10px">
@@ -78,11 +78,18 @@
       </option>
     </select>
   </div>
-
-    <div>
-      <button class="btn btn-secondary me-2" type="submit" [disabled]="!registerCaseForm.valid">Save</button>
-    </div>
+  <button 
+  class="btn btn-secondary me-2" 
+  type="submit" 
+  [disabled]="!registerCaseForm.valid">Save</button>
+   
 
   </form>
+
+</div> 
+<div class="card-footer">
+ 
   
+</div>
+</div>
 </div>

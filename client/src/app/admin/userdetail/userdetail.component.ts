@@ -12,11 +12,12 @@ import { UserServiceService } from '../../_services/user-service.service';
 import { GeneralService } from '../../_services/general.service';
 import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { FotoUploaderComponent } from '../../foto-uploader/foto-uploader.component';
 
 @Component({
   selector: 'app-userdetail',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,FotoUploaderComponent],
   templateUrl: './userdetail.component.html',
   styleUrl: './userdetail.component.css',
 })
@@ -68,9 +69,9 @@ export class UserdetailComponent implements OnInit {
     }
   }
 
-  CancelUpdate() {
-    this.EditBlok = 0;
-  }
+  CancelUpdate() { this.EditBlok = 0; }
+
+  changePhoto(url: any){this.cr.PhotoUrl = url;}
 
   Update() {
     var help = this.cr?.Id;
