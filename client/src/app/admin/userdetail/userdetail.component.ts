@@ -13,6 +13,7 @@ import { GeneralService } from '../../_services/general.service';
 import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { FotoUploaderComponent } from '../../foto-uploader/foto-uploader.component';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-userdetail',
@@ -29,6 +30,7 @@ export class UserdetailComponent implements OnInit {
   private userService = inject(UserServiceService);
   private toast = inject(ToastrService);
   EditBlok = 0;
+  baseUrl = environment.apiUrl;
 
   ngOnInit(): void {
     this.userService.getAllUsers().subscribe({
@@ -38,6 +40,8 @@ export class UserdetailComponent implements OnInit {
       },
     });
   }
+
+  getTargetUrl(){return this.baseUrl + "User/addUserPhoto/" + this.cr.Id};
 
   showEditBlok() {
     if (this.EditBlok === 1) {

@@ -45,6 +45,7 @@ public class Seed
             UserName = "admin@gfancy.nl",
             Email = "admin@gfancy.nl",
             Gender = "male",
+            KnownAs = "Administrator",
             PaidTill = new DateTime().AddYears(2250),
             Country = "31"
         };

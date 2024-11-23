@@ -54,18 +54,13 @@ public class UserController : BaseApiController
         throw new Exception($"Updating user {up.Id} failed on save");
     }
 
-    [HttpPost("addUserPhoto")]
-    public async Task<IActionResult> AddPhotoForUser(IFormFile file)
+    [HttpPost("addUserPhoto/{id}")]
+    public async Task<IActionResult> AddPhotoForUser(IFormFile file, int id)
     {
-        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        if (userId == null)
-        {
-            return BadRequest("");
-        }
-        var user = await _user.GetUserById(userId);
+        var user = await _manager.Users.SingleOrDefaultAsync(x => x.Id == id);
         if (user == null)
         {
-            return BadRequest("");
+            return BadRequest("User cant be found ??");
         }
 
         var result = await _photo.AddPhotoAsync(file);
@@ -81,12 +76,10 @@ public class UserController : BaseApiController
         }
 
         return BadRequest();
-
-        
     }
 
     [HttpPost("addUser")]
-    public async Task<IActionResult> addUser(UserForRegisterDto ufr)
+    public async Task<IActionResult> AddUser(UserForRegisterDto ufr)
     {
         var user = await _manager.Users.SingleOrDefaultAsync(x =>
             x.UserName == ufr.UserName.ToLower()

@@ -1,8 +1,3 @@
-using FBB.data.interfaces;
-using FBB.data.models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-
 namespace api.Controllers;
 
 [Authorize]

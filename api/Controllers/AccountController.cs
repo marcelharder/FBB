@@ -4,28 +4,20 @@ public class AccountController : BaseApiController
 {
 
     private readonly ITokenService _ts;
-    private static readonly HttpClient client = new HttpClient();
     private readonly UserManager<AppUser> _manager;
     private readonly SignInManager<AppUser> _signIn;
-    private readonly IConfiguration _config;
-    private readonly IWebHostEnvironment _hostEnvironment;
     private readonly IMapper _mapper;
 
     public AccountController(IMapper mapper,
         ITokenService ts,
-        IConfiguration config,
-        UserManager<AppUser> manager,
-        IWebHostEnvironment hostEnvironment,
+         UserManager<AppUser> manager,
         SignInManager<AppUser> signIn)
     {
-        _config = config;
         _mapper = mapper;
         _manager = manager;
         _signIn = signIn;
         _ts = ts;
-        _hostEnvironment = hostEnvironment;
-
-
+     
 
     }
 

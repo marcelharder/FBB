@@ -29,6 +29,7 @@ ngOnDestroy(): void {
 
 
 initializeUploader(){
+  
   this.uploader = new FileUploader({
     url: this.targetUrl,
     authToken: 'Bearer ' + this.acc.currentUser()?.Token,
@@ -40,6 +41,7 @@ initializeUploader(){
 
   });
   this.uploader.onAfterAddingFile = (file) => {
+    file.url = this.targetUrl;
     file.withCredentials = false;
     this.toast.success("Uploaded ...");
     
