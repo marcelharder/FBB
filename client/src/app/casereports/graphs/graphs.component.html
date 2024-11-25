@@ -1,24 +1,25 @@
 <div class="row">
     <div class="col-2">
         <div class="row">
-            <div class="col-12"><button class="btn btn-secondary mt-2" (click)="selectGraph(1)">Age distribution</button></div>
+            <div class="col-12"><button class="btn btn-secondary mt-2" (click)="getAG()">Age distribution</button></div>
         </div>
         <div class="row">
-            <div class="col-12"><button class="btn btn-secondary mt-2" (click)="selectGraph(2)">Country distribution</button></div>
+            <div class="col-12"><button class="btn btn-secondary mt-2" >Country distribution</button></div>
         </div>
         <div class="row">
-            <div class="col-12"><button class="btn btn-secondary mt-2" (click)="selectGraph(3)">Gender distribution</button></div>
+            <div class="col-12"><button class="btn btn-secondary mt-2" >Gender distribution</button></div>
         </div>
         <div class="row">
-            <div class="col-12"><button class="btn btn-secondary mt-2" (click)="selectGraph(4)">Time distribution</button></div>
+            <div class="col-12"><button class="btn btn-secondary mt-2" >Time distribution</button></div>
         </div>
        
     </div>
     <div class="col-10">
-        @if(graphToSelect === 1){<app-age></app-age>}
-        @if(graphToSelect === 2){<app-country></app-country>}
-        @if(graphToSelect === 3){<app-gender></app-gender>}
-        @if(graphToSelect === 4){<app-time></app-time>}
+      <app-age     *ngIf="showGraphNo === 1" [gm]="this.gm"></app-age>
+      <app-country *ngIf="showGraphNo === 2" [gm]="this.gm"></app-country>
+      <app-gender  *ngIf="showGraphNo === 3" [gm]="this.gm"></app-gender>
+      <app-time    *ngIf="showGraphNo === 4" [gm]="this.gm"></app-time>
+     
        
     </div>
 </div>

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { GraphModel } from '../../../_models/GraphModel';
 
 @Component({
   selector: 'app-country',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './country.component.css'
 })
 export class CountryComponent {
-
+  @Input() gm: GraphModel;
 }

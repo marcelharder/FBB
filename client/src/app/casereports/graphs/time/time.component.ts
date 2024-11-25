@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { GraphModel } from '../../../_models/GraphModel';
 
 @Component({
   selector: 'app-time',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './time.component.css'
 })
 export class TimeComponent {
-
+  @Input() gm: GraphModel;
 }
