@@ -1,3 +1,4 @@
+using System.Text.Json;
 using FBB.data.interfaces;
 using FBB.data.models;
 using Microsoft.EntityFrameworkCore;
@@ -38,11 +39,19 @@ public class CaseReportImp : ICaseReport
 
     public async Task<List<models.CaseReport>> GetListOfCaseReports()
     {
+        var countryData = await System.IO.File.ReadAllTextAsync("data/config/CountryList.json");
+        var countries = JsonSerializer.Deserialize<List<CountryDto>>(countryData);
+        
+        var l = new List<CaseReport>();
         if(await _context.CaseReports.AnyAsync()){
           var help = _context.CaseReports.OrderByDescending(u => u.CaseReportNo).AsQueryable();
-          _cases = await help.ToListAsync();
+          foreach(CaseReport caseReport in help){
+             caseReport.Country = countries.FirstOrDefault(a => a.CountryCode == caseReport.Country).CountryName;
+             l.Add(caseReport);
+          }
+          
         };
-       return _cases;
+       return l;
 
     }
 

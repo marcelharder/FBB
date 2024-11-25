@@ -9,7 +9,6 @@ import {
 } from '@angular/core';
 import { User } from '../../_models/User';
 import { UserServiceService } from '../../_services/user-service.service';
-import { GeneralService } from '../../_services/general.service';
 import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { FotoUploaderComponent } from '../../foto-uploader/foto-uploader.component';
