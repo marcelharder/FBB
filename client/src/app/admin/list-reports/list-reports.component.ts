@@ -11,10 +11,13 @@ import { ReportDetailComponent } from "../report-detail/report-detail.component"
   styleUrl: './list-reports.component.css',
 
 })
-export class ListReportsComponent {
+export class ListReportsComponent implements OnInit {
   @Input() listOfCases: CaseReportModel[] = [];
   selectedReport?:CaseReportModel = {} as CaseReportModel;
   
+  ngOnInit(): void {
+    this.selectedReport = this.listOfCases[0];
+  }
 
   getSelectedReport(){return this.selectedReport};
 

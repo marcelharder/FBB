@@ -10,6 +10,7 @@ public class CaseReport
         public string? PhotoUrl { get; set; }
         public string? Country { get; set; }
         public string? KnownAS {get; set;}
+        public string? Lesion {get; set;}
         public string? BatteryType {get; set;}
         public DateTime DateOfBirth { get; set; }
         public DateTime Created { get; set; }

@@ -17,7 +17,7 @@ public class CaseReportImp : ICaseReport
 
     public async Task<int> AddCaseReport(CaseReport cr)
     {
-
+        cr.Created = DateTime.UtcNow;
         _context.Add(cr);
         if (await _context.SaveChangesAsync() > 0)
         {

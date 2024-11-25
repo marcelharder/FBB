@@ -87,4 +87,5 @@ export class UserdetailComponent implements OnInit {
       });
     }
   }
+  GetNotReady(){return this.toast.error("Not implemented yet ...")}
 }

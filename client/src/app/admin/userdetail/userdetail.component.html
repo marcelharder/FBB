@@ -78,8 +78,11 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-12">
+          <!--   <div class="col-sm-12">
              <app-foto-uploader [targetUrl]="getTargetUrl()" (getMemberPhotoChange)="changePhoto($event)"></app-foto-uploader>
+            </div>
+          -->   <div class="col-sm-12">
+              <button class="btn btn-secondary" (click)="GetNotReady()">Upload</button>
             </div>
           </div>
         </div>

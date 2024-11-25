@@ -7,7 +7,10 @@
         "PaidTill": "1962-03-18",
         "Created": "2017-03-29",
         "Country": "31",
-        "Outcomes": 4
+        "Outcomes": 4,
+        "BatteryType":"regular",
+        "Lesion":"Hier komt iets",
+        "ReferrerId":7
        
     },
     {
@@ -18,7 +21,10 @@
         "PaidTill": "1978-03-18",
         "Created": "2017-02-12",
         "Country": "31",
-        "Outcomes": 1
+        "Outcomes": 1,
+        "BatteryType":"regular",
+        "Lesion":"Hier komt iets te",
+        "ReferrerId":7
        
     },
     {
@@ -29,7 +35,10 @@
         "PaidTill": "1923-03-18",
         "Created": "2017-07-23",
         "Country": "31",
-        "Outcomes": 2
+        "Outcomes": 2,
+        "BatteryType":"regular",
+        "Lesion":"Hier komt iets te staan",
+        "ReferrerId":7
        
     },
     {
@@ -40,7 +49,10 @@
         "PaidTill": "2001-03-18",
         "Created": "2017-07-09",
         "Country": "31",
-        "Outcomes": 1
+        "Outcomes": 1,
+        "BatteryType":"regular",
+        "Lesion":"Hier komt iets te staan en dat is het verloop",
+        "ReferrerId":7
        
     },
     {
@@ -51,7 +63,10 @@
         "PaidTill": "1962-03-18",
         "Created": "2017-07-19",
         "Country": "31",
-        "Outcomes": 3
+        "Outcomes": 3,
+        "BatteryType":"regular",
+        "Lesion":"Hier komt iets te staan en dat is een uitgebreid verslag",
+        "ReferrerId":7
        
     }
 ]

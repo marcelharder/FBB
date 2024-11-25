@@ -1,5 +1,6 @@
 export interface CaseReportModel{
     CaseReportNo:number;
+    Lesion: string;
     Gender: string;
     PhotoUrl:string;
     Country:string;
