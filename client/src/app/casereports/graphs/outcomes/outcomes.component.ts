@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { GraphModel } from '../../_models/GraphModel';
+import { GraphModel } from '../../../_models/GraphModel';
 
 @Component({
   selector: 'app-outcomes',
@@ -10,7 +10,7 @@ import { GraphModel } from '../../_models/GraphModel';
 })
 export class OutcomesComponent implements OnInit{
   
-  @Input() gm: GraphModel = { DataXas: [], DataYas: [], Caption: "" };
+  @Input() gm: GraphModel = { DataXas: [], DataYas: [], DataFused: [],Caption: "" };
 
   ngOnInit(): void {
     throw new Error('Method not implemented.');

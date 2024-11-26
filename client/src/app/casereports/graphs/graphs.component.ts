@@ -7,7 +7,7 @@ import { GraphService } from '../../_services/graph.service';
 import { GraphModel } from '../../_models/GraphModel';
 import { take } from 'rxjs';
 import { NgIf } from '@angular/common';
-import { OutcomesComponent } from '../outcomes/outcomes.component';
+import { OutcomesComponent } from './outcomes/outcomes.component';
 
 @Component({
   selector: 'app-graphs',
@@ -18,13 +18,18 @@ import { OutcomesComponent } from '../outcomes/outcomes.component';
 })
 export class GraphsComponent implements OnInit{
   
-  showGraphNo = 1;
+  showGraphNo = 0;
   private graph = inject(GraphService);
-  gm: GraphModel = { DataXas: [], DataYas: [], Caption: "" };
+  gm: GraphModel = { DataXas: [], DataYas: [],DataFused: [], Caption: "" };
 
   ngOnInit(): void {
     // get age data
-    this.graph.getAge().subscribe({ next: (data)=>{this.gm = data} })
+    this.graph.getAge().subscribe({ next: (data)=>{
+      this.gm = data;
+      this.showGraphNo = 1;
+    } });
+
+
 
 
 

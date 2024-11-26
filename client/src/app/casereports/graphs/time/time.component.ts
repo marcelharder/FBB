@@ -9,5 +9,5 @@ import { GraphModel } from '../../../_models/GraphModel';
   styleUrl: './time.component.css'
 })
 export class TimeComponent {
-  @Input() gm: GraphModel;
+  @Input() gm: GraphModel = { DataXas: [], DataYas: [], DataFused:[],Caption: "" };
 }

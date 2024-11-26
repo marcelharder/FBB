@@ -44,6 +44,7 @@ public class Statistics : IStatistics
             help.Add("71-80");
             help.Add("81-90");
             result.DataXas = help.ToArray();
+
             helpDouble.Add(getAge(0, list_of_ages));
             helpDouble.Add(getAge(1, list_of_ages));
             helpDouble.Add(getAge(2, list_of_ages));
@@ -53,6 +54,19 @@ public class Statistics : IStatistics
             helpDouble.Add(getAge(6, list_of_ages));
             helpDouble.Add(getAge(7, list_of_ages));
             result.DataYas = helpDouble.ToArray();
+
+            helpDouble.Clear();
+            helpDouble.Add(1);
+            helpDouble.Add(5);
+            helpDouble.Add(4);
+            helpDouble.Add(7);
+            helpDouble.Add(4);
+            helpDouble.Add(3);
+            helpDouble.Add(8);
+            helpDouble.Add(5);
+            result.DataFused = helpDouble.ToArray();
+
+
         });
         return result;
     }
@@ -154,5 +168,38 @@ public class Statistics : IStatistics
         var b = (dateOfBirth.Year * 100 + dateOfBirth.Month) * 100 + dateOfBirth.Day;
 
         return (a - b) / 10000;
+    }
+
+    public async Task<VladDto> GetOutcomes()
+    {
+        var help = new List<string>();
+        var helpRegular = new List<double>();
+        var helpFused = new List<double>();
+        var result = new VladDto();
+
+        var list_of_ages = new List<int>();
+
+        _cases = _context.CaseReports.FromSqlRaw("SELECT * FROM CaseReports").ToList();
+
+        foreach (CaseReport cp in _cases)
+        {
+            int? outcome = (int?)cp.Outcomes;
+            if (cp.BatteryType == "Regular") { helpRegular.Add(Convert.ToDouble(outcome)); }
+            else { helpFused.Add(Convert.ToDouble(outcome)); }
+        }
+
+        await Task.Run(() =>
+        {
+            result.Caption = "Outcomes categories";
+            help.Add("1");
+            help.Add("2");
+            help.Add("3");
+            help.Add("4");
+            help.Add("5");
+            result.DataXas = help.ToArray();
+            result.DataYas = helpRegular.ToArray();
+            result.DataFused = helpFused.ToArray();
+        });
+        return result;
     }
 }

@@ -1,7 +1,6 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { GraphModel } from '../../../_models/GraphModel';
 import { Chart, registerables} from 'chart.js';
-import { GraphService } from '../../../_services/graph.service';
 Chart.register(...registerables)
 
 @Component({
@@ -12,7 +11,7 @@ Chart.register(...registerables)
   styleUrls: ['./age.component.css']
 })
 export class AgeComponent implements OnInit {
-  @Input() gm: GraphModel = { DataXas: [], DataYas: [], Caption: "" };
+  @Input() gm: GraphModel = { DataXas: [], DataYas: [], DataFused:[],Caption: "" };
   //private graph = inject(GraphService);
   //gm: GraphModel = { DataXas: [], DataYas: [], Caption: "" };
  
@@ -29,10 +28,20 @@ export class AgeComponent implements OnInit {
     type:'bar',
     data:{
       labels: test.DataXas,
-      datasets:[{
-        label: test.Caption,
-        data:test.DataYas
-      }]
+      datasets:[
+        {
+        label: "Regular",
+        data:test.DataYas,
+        backgroundColor: "rgba(255,105,97,0.5)",
+        
+        },{
+          label: "Fused",
+          data:[1,3,4,2,3,8,7,9],
+          backgroundColor: "rgba(128,239,128,0.5)",
+          
+
+
+        }]
     },
     options: {
       scales: {

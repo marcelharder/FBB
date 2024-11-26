@@ -9,5 +9,5 @@ import { GraphModel } from '../../../_models/GraphModel';
   styleUrl: './country.component.css'
 })
 export class CountryComponent {
-  @Input() gm: GraphModel;
+  @Input() gm: GraphModel = { DataXas: [], DataYas: [], DataFused:[],Caption: "" };
 }
