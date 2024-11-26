@@ -65,10 +65,11 @@ public class Seed
         {
             foreach (CaseReport rep in categories)
             {
-                // save image to database
-                var result = context.CaseReports.Add(rep);
+                // save CaseReport to database
+                context.CaseReports.Add(rep);
+                await context.SaveChangesAsync();
             }
-            await context.SaveChangesAsync();
+            
         }
     }
 /*

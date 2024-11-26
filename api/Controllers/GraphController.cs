@@ -28,4 +28,52 @@ public class GraphController : BaseApiController
         }
         return BadRequest();
     }
+
+    [Route("countryGraph")]
+    [HttpGet]
+    public async Task<IActionResult> GetCountry()
+    {
+        VladDto result = await _st.GetAgeDistribution();
+        if (result.Caption != "n/a")
+        {
+            return Ok(result);
+        }
+        return BadRequest();
+    }
+
+    [Route("genderGraph")]
+    [HttpGet]
+    public async Task<IActionResult> GetGender()
+    {
+        VladDto result = await _st.GetAgeDistribution();
+        if (result.Caption != "n/a")
+        {
+            return Ok(result);
+        }
+        return BadRequest();
+    }
+
+    [Route("timingGraph")]
+    [HttpGet]
+    public async Task<IActionResult> GetTiming()
+    {
+        VladDto result = await _st.GetAgeDistribution();
+        if (result.Caption != "n/a")
+        {
+            return Ok(result);
+        }
+        return BadRequest();
+    }
+
+    [Route("outcomesGraph")]
+    [HttpGet]
+    public async Task<IActionResult> GetOutcomes()
+    {
+        VladDto result = await _st.GetAgeDistribution();
+        if (result.Caption != "n/a")
+        {
+            return Ok(result);
+        }
+        return BadRequest();
+    }
 }

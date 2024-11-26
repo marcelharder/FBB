@@ -14,9 +14,12 @@ export class GraphService {
 
   //getVlad(userId: number,id: number) { return this.http.get<GraphModel>(this.baseUrl + 'Graph/vladGraphPerHospital/' + userId + '/' + id); }
   //getCM(userId: number,id: number) { return this.http.get<GraphModel>(this.baseUrl + 'Graph/cmGraphPerHospital/' + userId + '/' + id); }
+  
+  
   getAge():Observable<GraphModel> { return this.http.get<GraphModel>(this.baseUrl + 'graph/ageGraph'); }
-  //getBand(userId: number,id: number) { return this.http.get<GraphModel>(this.baseUrl + 'Graph/euroGraphPerHospital/' + userId + '/' + id); }
-  //getPM(userId: number,id: number) {return this.http.get<GraphModel>(this.baseUrl + 'Graph/proceduresPerMonthGraphPerHospital/' + userId + '/' + id); }
-  //getPY(userId: number,id: number) {return this.http.get<GraphModel>(this.baseUrl + 'Graph/proceduresPerYearGraphPerHospital/' + userId + '/' + id); }
-
+  getCountry():Observable<GraphModel> { return this.http.get<GraphModel>(this.baseUrl + 'graph/countryGraph'); }
+  getGender():Observable<GraphModel> { return this.http.get<GraphModel>(this.baseUrl + 'graph/genderGraph'); }
+  getTiming():Observable<GraphModel> { return this.http.get<GraphModel>(this.baseUrl + 'graph/timingGraph'); }
+  getOutcomes():Observable<GraphModel> { return this.http.get<GraphModel>(this.baseUrl + 'graph/outcomesGraph'); }
+ 
 }

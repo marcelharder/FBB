@@ -1,58 +1,48 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { GraphModel } from '../../../_models/GraphModel';
-import { BaseChartDirective } from 'ng2-charts';
-import { ChartConfiguration, ChartOptions } from 'chart.js';
+import { Chart, registerables} from 'chart.js';
+import { GraphService } from '../../../_services/graph.service';
+Chart.register(...registerables)
 
 @Component({
   selector: 'app-age',
   standalone: true,
-  imports: [BaseChartDirective],
+  imports: [],
   templateUrl: './age.component.html',
   styleUrls: ['./age.component.css']
 })
 export class AgeComponent implements OnInit {
-  @Input() gm?: GraphModel;
-  
-  options = { hAxis: { title: 'Age groups' }, vAxis: { title: 'Age(years)' },};
-
+  @Input() gm: GraphModel = { DataXas: [], DataYas: [], Caption: "" };
+  //private graph = inject(GraphService);
+  //gm: GraphModel = { DataXas: [], DataYas: [], Caption: "" };
+ 
   constructor() { }
 
   ngOnInit(): void {
-   /*  var num: number = 0;
-    var i: number;
-    var help: Array<any> = [];
-    for (i = num; i < this.gm.DataXas.length; i++) { help.push([this.gm.DataXas[i], this.gm.DataYas[i]]); }
-    this.data = help;
-   this.title = this.gm.Caption; */
+  //this.graph.getAge().subscribe({ next: (data)=>{this.gm = data} })
+  this.RenderChart(this.gm);
+
   }
 
-  public lineChartData: ChartConfiguration<'bar'>['data']={
-    labels:this.gm?.DataXas,
-    datasets:[
-      {
-        data:this.gm?.DataYas,
-        label: 'Hallu',
-        borderColor:'black',
-        backgroundColor: 'rgba(255,0,0,0.3)'
+ RenderChart(test: GraphModel){
+  const chart_01 = new Chart('barchart',{
+    type:'bar',
+    data:{
+      labels: test.DataXas,
+      datasets:[{
+        label: test.Caption,
+        data:test.DataYas
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        }
       }
-     /*  ,
-      {
-        data:this.gm.DataYas,
-        label: 'Hallu-Nog',
-        fill: true,
-        tension: 0.5,
-        borderColor:'black',
-        backgroundColor: 'rgba(0,255,0,0.3)'
-      } */
-    ]
-  }
-
-  public lineChartOptions: ChartOptions<'bar'> = {
-    responsive: false
-  }
-
-  public lineChartLegend = true;
-
+    }
+  })
+ }
 
 
 
