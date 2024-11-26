@@ -184,7 +184,7 @@ public class Statistics : IStatistics
         foreach (CaseReport cp in _cases)
         {
             int? outcome = (int?)cp.Outcomes;
-            if (cp.BatteryType == "Regular") { helpRegular.Add(Convert.ToDouble(outcome)); }
+            if (cp.BatteryType == "regular") { helpRegular.Add(Convert.ToDouble(outcome)); }
             else { helpFused.Add(Convert.ToDouble(outcome)); }
         }
 

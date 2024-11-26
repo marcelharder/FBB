@@ -69,7 +69,7 @@ public class GraphController : BaseApiController
     [HttpGet]
     public async Task<IActionResult> GetOutcomes()
     {
-        VladDto result = await _st.GetAgeDistribution();
+        VladDto result = await _st.GetOutcomes();
         if (result.Caption != "n/a")
         {
             return Ok(result);
