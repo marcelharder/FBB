@@ -36,7 +36,7 @@ export class AgeComponent implements OnInit {
         
         },{
           label: "Fused",
-          data:[1,3,4,2,3,8,7,9],
+          data:test.DataFused,
           backgroundColor: "rgba(128,239,128,0.5)",
           
 

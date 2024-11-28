@@ -18,11 +18,12 @@
        
     </div>
     <div class="col-10">
+
       <app-age       *ngIf="showAge()"      [gm]="this.gm"></app-age>
-      <app-country   *ngIf="showCountry()"  [gm]="this.gm"></app-country>
-      <app-gender    *ngIf="showGender()"   [gm]="this.gm"></app-gender>
+      <app-country   *ngIf="showCountry()"  [gm]="this.countriesModel"></app-country>
+      <app-gender    *ngIf="showGender()"   [gm]="this.genderModel"></app-gender>
       <app-time      *ngIf="showTime()"     [gm]="this.gm"></app-time>
-      <app-outcomes  *ngIf="showOutcomes()" [gm]="this.gm"></app-outcomes>
+      <app-outcomes  *ngIf="showOutcomes()" [gm]="this.outcomesModel"></app-outcomes>
      
        
     </div>

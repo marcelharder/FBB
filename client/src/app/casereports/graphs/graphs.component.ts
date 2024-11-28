@@ -21,6 +21,9 @@ export class GraphsComponent implements OnInit{
   showGraphNo = 0;
   private graph = inject(GraphService);
   gm: GraphModel = { DataXas: [], DataYas: [],DataFused: [], Caption: "" };
+  genderModel: GraphModel = { DataXas: [], DataYas: [],DataFused: [], Caption: "" };
+  outcomesModel: GraphModel = { DataXas: [], DataYas: [],DataFused: [], Caption: "" };
+  countriesModel: GraphModel = { DataXas: [], DataYas: [],DataFused: [], Caption: "" };
 
   ngOnInit(): void {
     // get age data
@@ -28,10 +31,23 @@ export class GraphsComponent implements OnInit{
       this.gm = data;
       this.showGraphNo = 1;
     } });
+    // get gender data
+    this.genderModel.Caption = "Gender";
+    this.genderModel.DataFused = [4,10];
+    this.genderModel.DataYas = [5,6];
+    this.genderModel.DataXas = ["male","female"];
+    
+    // get outcomes data
+    this.outcomesModel.Caption = "Outcomes";
+    this.outcomesModel.DataFused = [0,1,2,1,0];
+    this.outcomesModel.DataYas = [2,4,3,5,3];
+    this.outcomesModel.DataXas = ["0","1","2","3","4","5"];
 
-
-
-
+     // get countries
+     this.countriesModel.Caption = "Contributions by country";
+     this.countriesModel.DataFused = [10,1,2,1,0,5];
+     this.countriesModel.DataYas = [2,4,3,5,3,5];
+     this.countriesModel.DataXas = ["NL","BE","DE","FR","SA","UK"];
 
   }
 

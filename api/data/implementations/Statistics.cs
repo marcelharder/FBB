@@ -22,14 +22,15 @@ public class Statistics : IStatistics
         var helpDouble = new List<double>();
         var result = new VladDto();
 
-        var list_of_ages = new List<int>();
+        var list_of_ages_reg = new List<int>();
+        var list_of_ages_fused = new List<int>();
 
         _cases = _context.CaseReports.FromSqlRaw("SELECT * FROM CaseReports").ToList();
 
         foreach (CaseReport cp in _cases)
         {
-            int age = GetAgeFromDOB(cp.DateOfBirth);
-            list_of_ages.Add(age);
+            if(cp.BatteryType == "regular"){int age = GetAgeFromDOB(cp.DateOfBirth);list_of_ages_reg.Add(age);}
+            else {int age = GetAgeFromDOB(cp.DateOfBirth);list_of_ages_fused.Add(age);}
         }
 
         await Task.Run(() =>
@@ -45,25 +46,25 @@ public class Statistics : IStatistics
             help.Add("81-90");
             result.DataXas = help.ToArray();
 
-            helpDouble.Add(getAge(0, list_of_ages));
-            helpDouble.Add(getAge(1, list_of_ages));
-            helpDouble.Add(getAge(2, list_of_ages));
-            helpDouble.Add(getAge(3, list_of_ages));
-            helpDouble.Add(getAge(4, list_of_ages));
-            helpDouble.Add(getAge(5, list_of_ages));
-            helpDouble.Add(getAge(6, list_of_ages));
-            helpDouble.Add(getAge(7, list_of_ages));
+            helpDouble.Add(getAge(0, list_of_ages_reg));
+            helpDouble.Add(getAge(1, list_of_ages_reg));
+            helpDouble.Add(getAge(2, list_of_ages_reg));
+            helpDouble.Add(getAge(3, list_of_ages_reg));
+            helpDouble.Add(getAge(4, list_of_ages_reg));
+            helpDouble.Add(getAge(5, list_of_ages_reg));
+            helpDouble.Add(getAge(6, list_of_ages_reg));
+            helpDouble.Add(getAge(7, list_of_ages_reg));
             result.DataYas = helpDouble.ToArray();
 
             helpDouble.Clear();
-            helpDouble.Add(1);
-            helpDouble.Add(5);
-            helpDouble.Add(4);
-            helpDouble.Add(7);
-            helpDouble.Add(4);
-            helpDouble.Add(3);
-            helpDouble.Add(8);
-            helpDouble.Add(5);
+            helpDouble.Add(getAge(0, list_of_ages_fused));
+            helpDouble.Add(getAge(1, list_of_ages_fused));
+            helpDouble.Add(getAge(2, list_of_ages_fused));
+            helpDouble.Add(getAge(3, list_of_ages_fused));
+            helpDouble.Add(getAge(4, list_of_ages_fused));
+            helpDouble.Add(getAge(5, list_of_ages_fused));
+            helpDouble.Add(getAge(6, list_of_ages_fused));
+            helpDouble.Add(getAge(7, list_of_ages_fused));
             result.DataFused = helpDouble.ToArray();
 
 
@@ -173,8 +174,10 @@ public class Statistics : IStatistics
     public async Task<VladDto> GetOutcomes()
     {
         var help = new List<string>();
-        var helpRegular = new List<double>();
-        var helpFused = new List<double>();
+        var category = new List<int>();
+        var helpDouble = new List<double>();
+        var helpRegular = new List<int>();
+        var helpFused = new List<int>();
         var result = new VladDto();
 
         var list_of_ages = new List<int>();
@@ -183,9 +186,9 @@ public class Statistics : IStatistics
 
         foreach (CaseReport cp in _cases)
         {
-            int? outcome = (int?)cp.Outcomes;
-            if (cp.BatteryType == "regular") { helpRegular.Add(Convert.ToDouble(outcome)); }
-            else { helpFused.Add(Convert.ToDouble(outcome)); }
+            int outcome = (int) cp.Outcomes;
+            if (cp.BatteryType == "regular") { helpRegular.Add(outcome); }
+            else { helpFused.Add(outcome); }
         }
 
         await Task.Run(() =>
@@ -197,9 +200,96 @@ public class Statistics : IStatistics
             help.Add("4");
             help.Add("5");
             result.DataXas = help.ToArray();
-            result.DataYas = helpRegular.ToArray();
-            result.DataFused = helpFused.ToArray();
+            
+            helpDouble.Add(GetOutcomesCategory(0, helpRegular));
+            helpDouble.Add(GetOutcomesCategory(1, helpRegular));
+            helpDouble.Add(GetOutcomesCategory(2, helpRegular));
+            helpDouble.Add(GetOutcomesCategory(3, helpRegular));
+            helpDouble.Add(GetOutcomesCategory(4, helpRegular));
+            helpDouble.Add(GetOutcomesCategory(5, helpRegular));
+            result.DataYas = helpDouble.ToArray();
+
+            helpDouble.Clear();
+            helpDouble.Add(GetOutcomesCategory(0, helpFused));
+            helpDouble.Add(GetOutcomesCategory(1, helpFused));
+            helpDouble.Add(GetOutcomesCategory(2, helpFused));
+            helpDouble.Add(GetOutcomesCategory(3, helpFused));
+            helpDouble.Add(GetOutcomesCategory(4, helpFused));
+            helpDouble.Add(GetOutcomesCategory(5, helpFused));
+            result.DataFused = helpDouble.ToArray();
+
+            
         });
         return result;
+    }
+
+    private static double GetOutcomesCategory(int no, List<int> category){
+
+         var help = 0.0;
+        switch (no)
+        {
+            case 0:
+                foreach (int a in category)
+                {
+                    if (a == 0)
+                    {
+                        help++;
+                    }
+                }
+                ;
+                break;
+            case 1:
+                foreach (int a in category)
+                {
+                    if (a == 1)
+                    {
+                        help++;
+                    }
+                }
+                ;
+                break;
+            case 2:
+                foreach (int a in category)
+                {
+                    if (a == 2)
+                    {
+                        help++;
+                    }
+                }
+                ;
+                break;
+            case 3:
+                foreach (int a in category)
+                {
+                    if (a == 3)
+                    {
+                        help++;
+                    }
+                }
+                ;
+                break;
+            case 4:
+                foreach (int a in category)
+                {
+                    if (a == 4)
+                    {
+                        help++;
+                    }
+                }
+                ;
+                break;
+            case 5:
+                foreach (int a in category)
+                {
+                    if (a == 5)
+                    {
+                        help++;
+                    }
+                }
+                ;
+                break;
+            
+        }
+        return help;
     }
 }

@@ -4,7 +4,60 @@
   <div class="card-body">
     <tabset>
       <tab heading="Graphs" id="tab1"><app-graphs></app-graphs></tab>
-      <tab heading="News">New development</tab>
+      <tab heading="Info">
+        <div class="row mt-2">
+          <div class="col-sm-6">
+            <div class="row">
+              <div class="col-sm-8"><h5>What to do after button battery ingestion</h5></div>
+              <div class="col-sm-4"><button (click)="gotoExternalDomain()">test</button></div>
+            </div>
+          </div>
+          <div class="col-sm-6"></div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm-6 ">
+            <div class="row">
+              <div class="col-sm-8"><h5>Statistics</h5></div>
+              <div class="col-sm-4"><button (click)="goIngestionStatistics()">test</button></div>
+            </div>
+          </div>
+          <div class="col-sm-6"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">Literature</div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-12 mt-2">
+                <span>
+                  Akinkugbe, O., James, A. L., Ostrow, O., Everett, T., Wolter, N. E., & McKinnon, N. K. (2022). Vascular complications in children Following button battery ingestions: A Systematic review. PEDIATRICS, 150(3). https://doi.org/10.1542/peds.2022-057477
+                 </span>
+                 <a (click)="literature(1)" style="Color:red" class="ml-2">=> => =></a>
+                 <!-- <button (click)="literature(1)">=></button> -->
+              </div> 
+            </div>
+            <div class="row">
+              <div class="col-sm-12 mt-2">
+                <span>
+                  Chiew, A. L., & Chan, B. S. H. (2023). Management of button battery ingestion. Clinical Toxicology, 61(12), 1017–1019. https://doi.org/10.1080/15563650.2023.2294622
+                 </span>
+                 <a (click)="literature(2)" style="Color:red" class="ml-2">=> => =></a>
+                 <!-- <button (click)="literature(1)">=></button> -->
+              </div> 
+            </div>
+
+
+
+
+
+            
+            
+          </div>
+        </div>
+       
+        
+        
+      </tab>
       <tab heading="Spare">Basic content 2</tab>
     </tabset>
   </div>
