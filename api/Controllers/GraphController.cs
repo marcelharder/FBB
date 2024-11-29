@@ -33,7 +33,7 @@ public class GraphController : BaseApiController
     [HttpGet]
     public async Task<IActionResult> GetCountry()
     {
-        VladDto result = await _st.GetAgeDistribution();
+        VladDto result = await _st.GetCountry();
         if (result.Caption != "n/a")
         {
             return Ok(result);
@@ -45,7 +45,7 @@ public class GraphController : BaseApiController
     [HttpGet]
     public async Task<IActionResult> GetGender()
     {
-        VladDto result = await _st.GetAgeDistribution();
+        VladDto result = await _st.GetGender();
         if (result.Caption != "n/a")
         {
             return Ok(result);
@@ -57,7 +57,7 @@ public class GraphController : BaseApiController
     [HttpGet]
     public async Task<IActionResult> GetTiming()
     {
-        VladDto result = await _st.GetAgeDistribution();
+        VladDto result = await _st.GetTiming();
         if (result.Caption != "n/a")
         {
             return Ok(result);
