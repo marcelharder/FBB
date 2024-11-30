@@ -1,0 +1,38 @@
+[
+    {
+        "CountryName":"NL",
+        "CountryCode":"31",
+        "Description":"Nederland"
+    },
+    {
+        "CountryName":"FR",
+        "CountryCode":"33",
+        "Description":"France"
+    },
+    {
+        "CountryName":"SA",
+        "CountryCode":"966",
+        "Description":"Kingdom of Saudi Arabia"
+    },
+    {
+        "CountryName":"UK",
+        "CountryCode":"44",
+        "Description":"United Kingdom"
+    },
+    {
+        "CountryName":"US",
+        "CountryCode":"1",
+        "Description":"United States"
+    },
+    {
+        "CountryName":"BE",
+        "CountryCode":"32",
+        "Description":"Belgium"
+    },
+    {
+        "CountryName":"DE",
+        "CountryCode":"49",
+        "Description":"Deutschland"
+    }
+    
+]

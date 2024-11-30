@@ -12,8 +12,11 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
-          "options": {
-            "outputPath": "dist/client",
+          "options":{
+            "outputPath":{
+              "base": "../api/wwwroot",
+              "browser": ""
+            } ,
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -25,15 +28,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/ngx-toastr/toastr.css",
               "src/styles.css"
             ],
-            "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
