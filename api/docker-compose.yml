@@ -15,11 +15,11 @@ services:
   
  
   fbbservice:
-    image: fbb_app:v1
+    image: fbb_app:v2
     networks:
       - internal-container-network
     ports:
-      - 8103:80
+      - 8105:80
     depends_on:
       - db
   
